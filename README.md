@@ -3,6 +3,10 @@
 Sistem aplikasi web manajemen proyek berbasis PHP Native dengan visualisasi **Gantt Chart Interaktif**, pemantauan progres tugas, relasi dependensi antartugas (*Finish-to-Start*), penanda *Milestone*, dan pengelolaan anggaran proyek.
 
 ---
+## Tampilan Antarmuka (UI)
+<img width="1917" height="970" alt="Screenshot 2026-10-22 021911" src="https://github.com/user-attachments/assets/261a7546-08e5-4dca-8a96-92ece9f23f5a" />
+
+<img width="1917" height="967" alt="Screenshot 2026-10-22 022059" src="https://github.com/user-attachments/assets/b357f6e1-d417-4e7a-956c-fedd1f6f0cab" />
 
 ## 🚀 Fitur Utama
 
@@ -31,10 +35,7 @@ Sistem aplikasi web manajemen proyek berbasis PHP Native dengan visualisasi **Ga
    - **RESTful JSON API**: Pemisahan modul endpoint backend (`api/projects.php` dan `api/tasks.php`) yang rapi.
 
 ---
-## Tampilan Antarmuka (UI)
-<img width="1917" height="970" alt="Screenshot 2026-10-22 021911" src="https://github.com/user-attachments/assets/261a7546-08e5-4dca-8a96-92ece9f23f5a" />
-<img width="1917" height="967" alt="Screenshot 2026-10-22 022059" src="https://github.com/user-attachments/assets/b357f6e1-d417-4e7a-956c-fedd1f6f0cab" />
----
+
 ## 📂 Struktur Direktori
 
 ```text
