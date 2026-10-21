@@ -1,0 +1,776 @@
+/* Modern Clean Dashboard & Gantt Chart Styling */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eef2ff;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #06b6d4;
+  --dark: #0f172a;
+  --gray-900: #1e293b;
+  --gray-800: #334155;
+  --gray-700: #475569;
+  --gray-600: #64748b;
+  --gray-400: #94a3b8;
+  --gray-200: #e2e8f0;
+  --gray-100: #f1f5f9;
+  --gray-50: #f8fafc;
+  --white: #ffffff;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background-color: #f8fafc;
+  color: var(--gray-800);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navbar */
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0.85rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.brand-icon {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: var(--white);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 65px);
+}
+
+/* Sidebar Proyek */
+.sidebar {
+  width: 320px;
+  min-width: 320px;
+  background: var(--white);
+  border-right: 1px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
+.project-list {
+  list-style: none;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-item {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-item:hover {
+  background: var(--primary-light);
+  border-color: #cbd5e1;
+}
+
+.project-item.active {
+  background: #eef2ff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 5px rgba(79, 70, 229, 0.15);
+}
+
+.project-item-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.project-item-meta {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+/* Progress Bar mini */
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.project-header {
+  padding: 1.25rem 1.75rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-info h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-info p {
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.project-metrics {
+  display: flex;
+  gap: 16px;
+}
+
+.metric-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  text-align: center;
+}
+
+.metric-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.metric-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+/* Gantt Toolbar */
+.gantt-toolbar {
+  padding: 0.85rem 1.75rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.view-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-group {
+  display: inline-flex;
+  background: var(--gray-100);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-group button {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: all 0.2s;
+}
+
+.btn-group button.active {
+  background: var(--white);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--white);
+  border-color: var(--gray-200);
+  color: var(--gray-700);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-100);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--white);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge-in_progress { background: #dbeafe; color: #1e40af; }
+.badge-completed { background: #d1fae5; color: #065f46; }
+.badge-not_started { background: #f1f5f9; color: #475569; }
+.badge-blocked { background: #fee2e2; color: #991b1b; }
+.badge-planning { background: #fef3c7; color: #92400e; }
+
+.badge-low { background: #e0f2fe; color: #0369a1; }
+.badge-medium { background: #fef3c7; color: #b45309; }
+.badge-high { background: #ffedd5; color: #c2410c; }
+.badge-urgent { background: #fee2e2; color: #b91c1c; }
+
+/* Gantt Chart Container */
+.gantt-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  background: var(--white);
+}
+
+/* Left panel: Task Table List */
+.gantt-table-panel {
+  width: 380px;
+  min-width: 380px;
+  border-right: 2px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: var(--white);
+  z-index: 10;
+}
+
+.gantt-table-header {
+  height: 52px;
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-200);
+  display: grid;
+  grid-template-columns: 36px 1fr 70px 65px;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  padding: 0 8px;
+}
+
+.gantt-table-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.gantt-table-row {
+  height: 48px;
+  display: grid;
+  grid-template-columns: 36px 1fr 70px 65px;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0 8px;
+  font-size: 0.825rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.gantt-table-row:hover {
+  background: #f8fafc;
+}
+
+.gantt-table-row.highlighted {
+  background: #eef2ff !important;
+}
+
+.gantt-task-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 6px;
+  font-weight: 500;
+}
+
+.milestone-icon {
+  color: var(--warning);
+  font-size: 0.9rem;
+}
+
+/* Right panel: Timeline / Gantt Canvas */
+.gantt-timeline-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  background: #fafbfc;
+}
+
+.gantt-timeline-header-wrap {
+  height: 52px;
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.gantt-timeline-header {
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gantt-timeline-body-wrap {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.gantt-timeline-body {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Timeline Columns */
+.timeline-col-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--gray-200);
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  font-weight: 600;
+  user-select: none;
+}
+
+.timeline-col-header.weekend {
+  background: #f1f5f9;
+}
+
+.timeline-col-header.today {
+  background: #e0e7ff;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Timeline Rows & Grid */
+.timeline-grid-lines {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  pointer-events: none;
+  height: 100%;
+}
+
+.timeline-grid-col {
+  border-right: 1px solid #f1f5f9;
+  height: 100%;
+}
+
+.timeline-grid-col.weekend {
+  background: rgba(241, 245, 249, 0.45);
+}
+
+.timeline-grid-col.today-line {
+  background: rgba(79, 70, 229, 0.04);
+  border-right: 2px dashed #6366f1;
+}
+
+.timeline-row {
+  height: 48px;
+  position: relative;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Gantt Task Bars */
+.gantt-bar-wrap {
+  position: absolute;
+  top: 9px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.2s;
+  z-index: 5;
+}
+
+.gantt-bar-wrap:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 8;
+}
+
+.gantt-bar-wrap:active {
+  cursor: grabbing;
+}
+
+.gantt-bar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 5px 0 0 5px;
+  pointer-events: none;
+}
+
+.gantt-bar-title {
+  position: relative;
+  z-index: 2;
+  padding: 0 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Resize Handles */
+.bar-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+.bar-resize-left {
+  left: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.bar-resize-right {
+  right: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Milestone Diamond */
+.gantt-milestone {
+  position: absolute;
+  top: 13px;
+  width: 22px;
+  height: 22px;
+  background: #f59e0b;
+  transform: rotate(45deg);
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.4);
+  cursor: pointer;
+  z-index: 6;
+}
+
+/* SVG Dependency Lines */
+.gantt-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.dep-line {
+  stroke: #94a3b8;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 4, 3;
+}
+
+.dep-line.highlight {
+  stroke: #4f46e5;
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+}
+
+.dep-arrow {
+  fill: #94a3b8;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: transform 0.2s ease;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Form inputs */
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--gray-800);
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.color-picker-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.color-option {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s;
+}
+
+.color-option:hover {
+  transform: scale(1.15);
+}
+
+.color-option.selected {
+  border-color: var(--dark);
+}
+
+/* Tooltip for Gantt Bars */
+.gantt-tooltip {
+  position: fixed;
+  background: var(--dark);
+  color: var(--white);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  display: none;
+  line-height: 1.4;
+  max-width: 260px;
+}
